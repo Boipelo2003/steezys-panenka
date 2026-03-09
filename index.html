@@ -3,70 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steezy's Panenka Menu</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Steezy's Panenka | Kota Wraps Made Eezy</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Steezy's Panenka serves delicious kota wraps and meals in Potchefstroom. Order via WhatsApp for quick service.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-yellow: #fde047;
+            --dark-yellow: #eab308;
+            --primary-red: #dc2626;
+            --dark-bg: #111827;
+            --text-light: #f3f4f6;
+            --text-dark: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & HERO --- */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--primary-yellow);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid var(--primary-red);
+        }
+
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-size: 1.8rem;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            background-color: var(--primary-red);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-section {
+            padding: 5rem 5%;
+            background-color: var(--primary-yellow);
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--dark-bg);
+            text-transform: uppercase;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--primary-red);
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed #e5e7eb;
+            padding-bottom: 1rem;
+        }
+
+        .menu-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--dark-bg);
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        .ingredients {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .signature {
+            background-color: var(--dark-bg);
+            color: var(--primary-yellow);
+            border-bottom: 5px solid var(--primary-yellow);
+        }
+        
+        .signature .menu-header h3, .signature .ingredients {
+            color: #fff;
+        }
+
+        /* --- EXTRAS SECTION --- */
+        .extras-section {
+            padding: 4rem 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .extras-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .extras-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .extras-list li {
+            background: var(--dark-bg);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .extras-list li span {
+            color: var(--primary-yellow);
+            margin-left: 5px;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            padding: 4rem 5%;
+            background-color: var(--primary-red);
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+        }
+
+        .contact-item p, .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- SOCIAL ICONS (optional inline) --- */
+        .social-icons {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+        .social-icons a {
+            color: var(--primary-yellow);
+            margin: 0 10px;
+            font-size: 2rem;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- FLOATING WHATSAPP BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 99;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        .whatsapp-float:hover {
+            background: #128C7E;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #9ca3af;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer .credit {
+            margin-top: 1rem;
+            color: var(--primary-yellow);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .contact-info { flex-direction: column; gap: 1.5rem; }
+            .whatsapp-float { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>🍽️ STEEZY’S PANENKA</h1>
-        <p class="tagline">“WE PRESERVE THE BEST QUALITY OF OUR MEALS”</p>
+        <div class="logo">
+            <h1>STEEZY'S PANENKA</h1>
+        </div>
+        <div style="font-weight: bold;">@STEEZY'S PANENKA</div>
     </header>
 
-    <main>
-        <div class="menu-container">
-            <!-- Menu Item 1 -->
-            <div class="menu-item" data-name="Step Over R30" data-price="30">
-                <h2>Step Over R30</h2>
-                <p class="description">Chips, Egg, Polony, Vienna, Cheese & Crispy Lettuce</p>
-                <button class="order-btn">Order via WhatsApp</button>
+    <section class="hero">
+        <h2>Steezy's Panenka</h2>
+        <p>"Kota Wraps Made Eezy"</p>
+        <div class="tagline">WE PRESERVE THE BEST QUALITY OF OUR MEALS</div>
+    </section>
+
+    <section class="menu-section">
+        <h2 class="section-title">The Playbook (Menu)</h2>
+        <div class="menu-grid">
+            
+            <div class="menu-card" data-name="Step Over" data-price="36">
+                <div class="menu-header">
+                    <h3>Step Over</h3>
+                    <span class="price">R36</span>
+                </div>
+                <p class="ingredients">Chips, Egg, Polony, Vienna, Cheese & Crispy Lettuce</p>
             </div>
 
-            <!-- Menu Item 2 -->
-            <div class="menu-item" data-name="Trivela R36" data-price="36">
-                <h2>Trivela R36</h2>
-                <p class="description">Chips, Russian, Egg, Polony, Cheese & Crispy Lettuce</p>
-                <button class="order-btn">Order via WhatsApp</button>
+            <div class="menu-card" data-name="Trivela" data-price="40">
+                <div class="menu-header">
+                    <h3>Trivela</h3>
+                    <span class="price">R40</span>
+                </div>
+                <p class="ingredients">Chips, Russian, Egg, Polony, Cheese & Crispy Lettuce</p>
             </div>
 
-            <!-- Menu Item 3 -->
-            <div class="menu-item" data-name="Roulette R40" data-price="40">
-                <h2>Roulette R40</h2>
-                <p class="description">Chips, Russian, Egg, Polony, Cheese, Bacon & Crispy Lettuce</p>
-                <button class="order-btn">Order via WhatsApp</button>
+            <div class="menu-card" data-name="Roulette" data-price="46">
+                <div class="menu-header">
+                    <h3>Roulette</h3>
+                    <span class="price">R46</span>
+                </div>
+                <p class="ingredients">Chips, Russian, Egg, Polony, Cheese, Bacon & Crispy Lettuce</p>
             </div>
 
-            <!-- Menu Item 4 -->
-            <div class="menu-item" data-name="Knuckleball R50" data-price="50">
-                <h2>Knuckleball R50</h2>
-                <p class="description">Chips, Russian, Cheese, Smashed Beef Patty, Polony & Crispy Lettuce, Bacon</p>
-                <button class="order-btn">Order via WhatsApp</button>
+            <div class="menu-card" data-name="Knuckleball" data-price="56">
+                <div class="menu-header">
+                    <h3>Knuckleball</h3>
+                    <span class="price">R56</span>
+                </div>
+                <p class="ingredients">Chips, Russian, Cheese, Smashed Beef Patty, Polony & Crispy Lettuce, Bacon</p>
             </div>
 
-            <!-- Menu Item 5 -->
-            <div class="menu-item" data-name="Elastico R56" data-price="56">
-                <h2>Elastico R56</h2>
-                <p class="description">Chips, Egg, Russian, Polony, Rib Patty & Crispy Lettuce, Bacon</p>
-                <button class="order-btn">Order via WhatsApp</button>
+            <div class="menu-card" data-name="Rebound" data-price="65">
+                <div class="menu-header">
+                    <h3>Rebound</h3>
+                    <span class="price">R65</span>
+                </div>
+                <p class="ingredients">Chips, Cheese, Russian, Polony, Rib Patty, Bacon, Egg & Crispy Lettuce</p>
             </div>
 
-            <!-- Menu Item 6 -->
-            <div class="menu-item" data-name="Rebound R60" data-price="60">
-                <h2>Rebound R60</h2>
-                <p class="description">Chips, Cheese, Russian, Polony, Rib Patty, Bacon, Egg & Crispy Lettuce</p>
-                <button class="order-btn">Order via WhatsApp</button>
+            <div class="menu-card" data-name="Sombrero Flick" data-price="75">
+                <div class="menu-header">
+                    <h3>Sombrero Flick</h3>
+                    <span class="price">R75</span>
+                </div>
+                <p class="ingredients">Chips, Cheese (x2), Beef Patty (x2), Russian, Bacon & Crispy Lettuce</p>
+            </div>
+
+            <div class="menu-card signature" data-name="P.A.N.E.N.K.A" data-price="85">
+                <div class="menu-header">
+                    <h3>P.A.N.E.N.K.A</h3>
+                    <span class="price">R85</span>
+                </div>
+                <p class="ingredients">Chips, Cheese (x2), Rib Patty (x2), Russian, Bacon, Egg & Crispy Lettuce</p>
+            </div>
+
+            <!-- Wings & Chips R60 -->
+            <div class="menu-card" data-name="Wings & Chips" data-price="60">
+                <div class="menu-header">
+                    <h3>Wings & Chips</h3>
+                    <span class="price">R60</span>
+                </div>
+                <p class="ingredients">Crispy chicken wings served with golden chips and special sauce</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="extras-section">
+        <div class="extras-container">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2rem; color: var(--dark-bg);">Customize Your Play (Extras)</h2>
+            <ul class="extras-list">
+                <li>Cheese <span>R5</span></li>
+                <li>Egg <span>R5</span></li>
+                <li>Bacon <span>R8</span></li>
+                <li>Vienna <span>R10</span></li>
+                <li>Beef Patty <span>R12</span></li>
+                <li>Rib Patty <span>R15</span></li>
+                <li>Russian <span>R15</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Find Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>📍 Location</h4>
+                <p><a href="https://maps.google.com/?q=3+Khutumani+Street+Ikageng+Potchefstroom" target="_blank">3 Khutumani Street, Ikageng, Potchefstroom</a></p>
+            </div>
+            <div class="contact-item">
+                <h4>🕒 Hours</h4>
+                <p>Mon–Sun: 10:00 – 21:00</p>
+            </div>
+            <div class="contact-item">
+                <h4>📱 WhatsApp</h4>
+                <p class="phone">073 922 6892</p>
+                <p class="phone">063 720 5894</p>
+            </div>
+            <div class="contact-item">
+                <h4>📞 Call Us</h4>
+                <p class="phone">079 701 7659</p>
             </div>
         </div>
 
-        <!-- Contact Section -->
-        <div class="contact">
-            <h3>📞 Contacts</h3>
-            <p>073 922 6892</p>
-            <p>063 720 5894</p>
-            <p>079 701 7659</p>
-            <p>📍 3 Khutumani Street, Ikageng, Potchefstroom</p>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/yourpage" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/27739226892" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
-    </main>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/27739226892" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i> Order via WhatsApp
+    </a>
+
+    <footer>
+        <p>&copy; 2026 Steezy's Panenka. All rights reserved.</p>
+        <p class="credit">Website made by Boipelo Bokamoso Amogelang Mothibi</p>
+    </footer>
+
+    <!-- WhatsApp Order Script with Extras Prompt (improved) -->
+    <script>
+        (function() {
+            // WhatsApp business number (international format, no '+')
+            const businessNumber = '27739226892'; // 073 922 6892
+
+            // Select all menu cards
+            const menuCards = document.querySelectorAll('.menu-card');
+
+            menuCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Get item name and price from data attributes
+                    const itemName = this.dataset.name;
+                    const itemPrice = this.dataset.price;
+
+                    // Ask for extras (no default value)
+                    const extras = prompt('Add any extras? (e.g., extra cheese, bacon, etc.)');
+
+                    // Build the message
+                    let message = `Hello, I would like to order the ${itemName} (R${itemPrice}).`;
+                    if (extras && extras.trim() !== '') {
+                        message += `\n\nExtras: ${extras.trim()}`;
+                    }
+
+                    // Encode for URL
+                    const encodedMessage = encodeURIComponent(message);
+
+                    // Create WhatsApp URL
+                    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
+
+                    // Open in new tab
+                    window.open(whatsappUrl, '_blank');
+                });
+            });
+
+            // Make phone numbers clickable to call
+            const phoneNumbers = document.querySelectorAll('.phone');
+            phoneNumbers.forEach(phone => {
+                phone.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    const number = this.innerText.replace(/\D/g, '');
+                    window.location.href = `tel:${number}`;
+                });
+            });
+        })();
+    </script>
+
 </body>
 </html>

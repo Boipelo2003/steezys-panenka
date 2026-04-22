@@ -4,12 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steezy's Panenka | Kota Wraps Made Eezy</title>
+
     <!-- Meta Description for SEO -->
     <meta name="description" content="Steezy's Panenka serves delicious kota wraps and meals in Potchefstroom. Order via WhatsApp for quick service.">
+
+    <!-- Open Graph tags for WhatsApp/social link previews -->
+    <meta property="og:title" content="Steezy's Panenka | Kota Wraps Made Eezy">
+    <meta property="og:description" content="Steezy's Panenka serves delicious kota wraps and meals in Potchefstroom. Order via WhatsApp for quick service.">
+    <meta property="og:type" content="restaurant">
+    <meta property="og:url" content="https://steezyspanenka.co.za">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550547660-d9450f859349?w=1200&q=80">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌯</text></svg>">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- LocalBusiness JSON-LD structured data for Google search results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Steezy's Panenka",
+      "description": "Kota Wraps Made Eezy — delicious kota wraps and meals in Potchefstroom.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8221 Bathoeng Street, Ikageng (Sayana Carwash)",
+        "addressLocality": "Potchefstroom",
+        "addressCountry": "ZA"
+      },
+      "telephone": "+27739226892",
+      "openingHours": "Mo-Sa 10:00-19:00",
+      "servesCuisine": "South African street food",
+      "priceRange": "R26–R85"
+    }
+    </script>
+
     <style>
         :root {
             --primary-yellow: #fde047;
@@ -52,6 +85,26 @@
             font-weight: 900;
             letter-spacing: 2px;
             font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fff;
         }
 
         .hero {
@@ -159,9 +212,17 @@
             color: var(--primary-yellow);
             border-bottom: 5px solid var(--primary-yellow);
         }
-        
-        .signature .menu-header h3, .signature .ingredients {
+
+        .signature .menu-header h3 {
             color: #fff;
+        }
+
+        .signature .ingredients {
+            color: #d1d5db;
+        }
+
+        .signature .price {
+            color: var(--primary-yellow);
         }
 
         /* --- EXTRAS SECTION --- */
@@ -227,7 +288,8 @@
             color: var(--primary-yellow);
         }
 
-        .contact-item p, .contact-item a {
+        .contact-item p,
+        .contact-item a {
             color: #fff;
             text-decoration: none;
             cursor: pointer;
@@ -237,11 +299,23 @@
             text-decoration: underline;
         }
 
-        /* --- SOCIAL ICONS (optional inline) --- */
+        .phone {
+            cursor: pointer;
+            transition: opacity 0.2s;
+            display: inline-block;
+        }
+
+        .phone:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* --- SOCIAL ICONS --- */
         .social-icons {
             text-align: center;
             margin: 30px 0 10px;
         }
+
         .social-icons a {
             color: var(--primary-yellow);
             margin: 0 10px;
@@ -249,6 +323,7 @@
             transition: transform 0.2s;
             display: inline-block;
         }
+
         .social-icons a:hover {
             transform: scale(1.1);
         }
@@ -263,7 +338,7 @@
             border-radius: 50px;
             padding: 12px 20px;
             font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 99;
             text-decoration: none;
             display: flex;
@@ -271,6 +346,7 @@
             gap: 8px;
             transition: background 0.3s;
         }
+
         .whatsapp-float:hover {
             background: #128C7E;
         }
@@ -291,12 +367,135 @@
             letter-spacing: 1px;
         }
 
+        /* --- CUSTOM EXTRAS MODAL --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalIn 0.2s ease;
+        }
+
+        @keyframes modalIn {
+            from { transform: scale(0.92); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+
+        .modal h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: var(--dark-bg);
+            margin-bottom: 0.3rem;
+        }
+
+        .modal .modal-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .modal label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .modal textarea {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 80px;
+            transition: border-color 0.2s;
+        }
+
+        .modal textarea:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+        }
+
+        .modal-hint {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-cancel:hover {
+            background: #f3f4f6;
+        }
+
+        .btn-order {
+            flex: 2;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            background: #25D366;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-order:hover {
+            background: #128C7E;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h2 { font-size: 2.5rem; }
             .hero p { font-size: 1.2rem; }
             .contact-info { flex-direction: column; gap: 1.5rem; }
             .whatsapp-float { padding: 8px 15px; font-size: 0.9rem; }
+            nav a { display: none; }
+            nav a.wa-nav { display: inline; }
         }
     </style>
 </head>
@@ -306,7 +505,14 @@
         <div class="logo">
             <h1>STEEZY'S PANENKA</h1>
         </div>
-        <div style="font-weight: bold;">@STEEZY'S PANENKA</div>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#extras">Extras</a>
+            <a href="#contact">Find Us</a>
+            <a href="https://wa.me/27739226892" target="_blank" class="wa-nav" style="color:#25D366;">
+                <i class="fab fa-whatsapp"></i> Order
+            </a>
+        </nav>
     </header>
 
     <section class="hero">
@@ -315,16 +521,32 @@
         <div class="tagline">WE PRESERVE THE BEST QUALITY OF OUR MEALS</div>
     </section>
 
-    <section class="menu-section">
+    <section class="menu-section" id="menu">
         <h2 class="section-title">The Playbook (Menu)</h2>
         <div class="menu-grid">
-            
+
+            <div class="menu-card" data-name="First Touch" data-price="26">
+                <div class="menu-header">
+                    <h3>First Touch</h3>
+                    <span class="price">R26</span>
+                </div>
+                <p class="ingredients">Chips, Egg, Crispy Lettuce, Cheese</p>
+            </div>
+
+            <div class="menu-card" data-name="Ankara Messi" data-price="30">
+                <div class="menu-header">
+                    <h3>Ankara Messi</h3>
+                    <span class="price">R30</span>
+                </div>
+                <p class="ingredients">Chips, ½ Russian, Crispy Lettuce, Cheese or Egg</p>
+            </div>
+
             <div class="menu-card" data-name="Step Over" data-price="36">
                 <div class="menu-header">
                     <h3>Step Over</h3>
                     <span class="price">R36</span>
                 </div>
-                <p class="ingredients">Chips, Egg, Polony, Vienna, Cheese & Crispy Lettuce</p>
+                <p class="ingredients">Chips, Egg, ½ Russian, Cheese &amp; Crispy Lettuce</p>
             </div>
 
             <div class="menu-card" data-name="Trivela" data-price="40">
@@ -332,7 +554,7 @@
                     <h3>Trivela</h3>
                     <span class="price">R40</span>
                 </div>
-                <p class="ingredients">Chips, Russian, Egg, Polony, Cheese & Crispy Lettuce</p>
+                <p class="ingredients">Chips, Full Russian, Egg, Cheese &amp; Crispy Lettuce</p>
             </div>
 
             <div class="menu-card" data-name="Roulette" data-price="46">
@@ -340,7 +562,7 @@
                     <h3>Roulette</h3>
                     <span class="price">R46</span>
                 </div>
-                <p class="ingredients">Chips, Russian, Egg, Polony, Cheese, Bacon & Crispy Lettuce</p>
+                <p class="ingredients">Chips, Russian, Egg, Cheese, Bacon &amp; Crispy Lettuce</p>
             </div>
 
             <div class="menu-card" data-name="Knuckleball" data-price="56">
@@ -348,7 +570,7 @@
                     <h3>Knuckleball</h3>
                     <span class="price">R56</span>
                 </div>
-                <p class="ingredients">Chips, Russian, Cheese, Smashed Beef Patty, Polony & Crispy Lettuce, Bacon</p>
+                <p class="ingredients">Chips, Russian, Cheese, Smashed Beef Patty, Crispy Lettuce, Bacon</p>
             </div>
 
             <div class="menu-card" data-name="Rebound" data-price="65">
@@ -356,7 +578,7 @@
                     <h3>Rebound</h3>
                     <span class="price">R65</span>
                 </div>
-                <p class="ingredients">Chips, Cheese, Russian, Polony, Rib Patty, Bacon, Egg & Crispy Lettuce</p>
+                <p class="ingredients">Chips, Cheese, Russian, Riblets, Bacon, Egg &amp; Crispy Lettuce</p>
             </div>
 
             <div class="menu-card" data-name="Sombrero Flick" data-price="75">
@@ -364,7 +586,7 @@
                     <h3>Sombrero Flick</h3>
                     <span class="price">R75</span>
                 </div>
-                <p class="ingredients">Chips, Cheese (x2), Beef Patty (x2), Russian, Bacon & Crispy Lettuce</p>
+                <p class="ingredients">Chips, Cheese (x2), Beef Patty (x2), Russian, Bacon &amp; Crispy Lettuce</p>
             </div>
 
             <div class="menu-card signature" data-name="P.A.N.E.N.K.A" data-price="85">
@@ -372,31 +594,13 @@
                     <h3>P.A.N.E.N.K.A</h3>
                     <span class="price">R85</span>
                 </div>
-                <p class="ingredients">Chips, Cheese (x2), Rib Patty (x2), Russian, Bacon, Egg & Crispy Lettuce</p>
-            </div>
-
-            <!-- Wings & Chips R60 -->
-            <div class="menu-card" data-name="Wings & Chips" data-price="60">
-                <div class="menu-header">
-                    <h3>Wings & Chips</h3>
-                    <span class="price">R60</span>
-                </div>
-                <p class="ingredients">Crispy chicken wings served with golden chips and special sauce</p>
-            </div>
-
-            <!-- NEW Wings, Chips and Wrap R100 -->
-            <div class="menu-card" data-name="Wings, Chips and Wrap" data-price="100">
-                <div class="menu-header">
-                    <h3>Wings, Chips & Wrap</h3>
-                    <span class="price">R100</span>
-                </div>
-                <p class="ingredients">Crispy chicken wings, golden chips, and a delicious wrap with your choice of filling</p>
+                <p class="ingredients">Chips, Cheese (x2), Riblets (x2), Russian, Bacon, Egg &amp; Crispy Lettuce</p>
             </div>
 
         </div>
     </section>
 
-    <section class="extras-section">
+    <section class="extras-section" id="extras">
         <div class="extras-container">
             <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2rem; color: var(--dark-bg);">Customize Your Play (Extras)</h2>
             <ul class="extras-list">
@@ -405,99 +609,125 @@
                 <li>Bacon <span>R8</span></li>
                 <li>Vienna <span>R10</span></li>
                 <li>Beef Patty <span>R12</span></li>
-                <li>Rib Patty <span>R15</span></li>
+                <li>Riblets <span>R15</span></li>
                 <li>Russian <span>R15</span></li>
             </ul>
         </div>
     </section>
 
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Find Us</h2>
         <div class="contact-info">
             <div class="contact-item">
-                <h4>📍 Location</h4>
-                <p><a href="https://maps.google.com/?q=3+Khutumani+Street+Ikageng+Potchefstroom" target="_blank">3 Khutumani Street, Ikageng, Potchefstroom</a></p>
+                <h4>&#128205; Location</h4>
+                <p><a href="https://maps.google.com/maps?q=8221+Bathoeng+Street,+Ikageng,+Potchefstroom" target="_blank" rel="noopener">8221 Bathoeng Street, Ikageng<br>(Sayana Carwash)</a></p>
             </div>
             <div class="contact-item">
-                <h4>🕒 Hours</h4>
-                <p>Mon–Sat: 10:00 – 19:00</p>
-                <!-- Sunday closed – not listed -->
+                <h4>&#128338; Hours</h4>
+                <p>Mon&#8211;Sat: 10:00 &#8211; 19:00</p>
             </div>
             <div class="contact-item">
-                <h4>📱 WhatsApp</h4>
-                <p class="phone">073 922 6892</p>
-                <p class="phone">063 720 5894</p>
+                <h4>&#128242; WhatsApp</h4>
+                <p><a class="phone" href="tel:+27739226892">073 922 6892</a></p>
+                <p><a class="phone" href="tel:+27637205894">063 720 5894</a></p>
             </div>
             <div class="contact-item">
-                <h4>📞 Call Us</h4>
-                <p class="phone">079 701 7659</p>
+                <h4>&#128222; Call Us</h4>
+                <p><a class="phone" href="tel:+27797017659">079 701 7659</a></p>
             </div>
         </div>
 
-        <!-- Social Media Icons -->
         <div class="social-icons">
-            <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com/yourpage" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/27739226892" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/SteezysPanenka" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/SteezysPanenka" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/27739226892" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
     </section>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/27739226892" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/27739226892" target="_blank" rel="noopener" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i> Order via WhatsApp
     </a>
+
+    <!-- Custom branded extras modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <h3 id="modal-item-name">Item Name</h3>
+            <div class="modal-price" id="modal-item-price">R00</div>
+            <label for="modal-extras">Add extras? (optional)</label>
+            <textarea id="modal-extras" placeholder="e.g. extra cheese, no lettuce, extra sauce..."></textarea>
+            <p class="modal-hint">Extras: Cheese R5 · Egg R5 · Bacon R8 · Vienna R10 · Beef Patty R12 · Riblets R15 · Russian R15</p>
+            <div class="modal-buttons">
+                <button class="btn-cancel" id="modal-cancel">Cancel</button>
+                <button class="btn-order" id="modal-confirm">
+                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 Steezy's Panenka. All rights reserved.</p>
         <p class="credit">Website made by Boipelo Bokamoso Amogelang Mothibi</p>
     </footer>
 
-    <!-- WhatsApp Order Script with Extras Prompt (improved) -->
     <script>
-        (function() {
-            // WhatsApp business number (international format, no '+')
-            const businessNumber = '27739226892'; // 073 922 6892
+        (function () {
+            const businessNumber = '27739226892';
+            let currentItem = null;
 
-            // Select all menu cards
-            const menuCards = document.querySelectorAll('.menu-card');
+            const overlay  = document.getElementById('modal-overlay');
+            const nameEl   = document.getElementById('modal-item-name');
+            const priceEl  = document.getElementById('modal-item-price');
+            const extrasEl = document.getElementById('modal-extras');
+            const cancelBtn  = document.getElementById('modal-cancel');
+            const confirmBtn = document.getElementById('modal-confirm');
 
-            menuCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // Get item name and price from data attributes
-                    const itemName = this.dataset.name;
-                    const itemPrice = this.dataset.price;
-
-                    // Ask for extras (no default value)
-                    const extras = prompt('Add any extras? (e.g., extra cheese, bacon, etc.)');
-
-                    // Build the message
-                    let message = `Hello, I would like to order the ${itemName} (R${itemPrice}).`;
-                    if (extras && extras.trim() !== '') {
-                        message += `\n\nExtras: ${extras.trim()}`;
-                    }
-
-                    // Encode for URL
-                    const encodedMessage = encodeURIComponent(message);
-
-                    // Create WhatsApp URL
-                    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
-
-                    // Open in new tab
-                    window.open(whatsappUrl, '_blank');
+            // Open modal on menu card click
+            document.querySelectorAll('.menu-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    currentItem = {
+                        name:  this.dataset.name,
+                        price: this.dataset.price
+                    };
+                    nameEl.textContent  = currentItem.name;
+                    priceEl.textContent = 'R' + currentItem.price;
+                    extrasEl.value = '';
+                    overlay.classList.add('active');
+                    extrasEl.focus();
                 });
             });
 
-            // Make phone numbers clickable to call
-            const phoneNumbers = document.querySelectorAll('.phone');
-            phoneNumbers.forEach(phone => {
-                phone.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent event bubbling
-                    const number = this.innerText.replace(/\D/g, '');
-                    window.location.href = `tel:${number}`;
-                });
+            // Close modal
+            cancelBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) closeModal();
             });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            function closeModal() {
+                overlay.classList.remove('active');
+                currentItem = null;
+            }
+
+            // Send WhatsApp order
+            confirmBtn.addEventListener('click', function () {
+                if (!currentItem) return;
+                const extras = extrasEl.value.trim();
+                let message = 'Hello, I would like to order the ' + currentItem.name + ' (R' + currentItem.price + ').';
+                if (extras) {
+                    message += '\n\nExtras: ' + extras;
+                }
+                const url = 'https://wa.me/' + businessNumber + '?text=' + encodeURIComponent(message);
+                window.open(url, '_blank');
+                closeModal();
+            });
+
         })();
     </script>
 
 </body>
 </html>
+

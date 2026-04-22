@@ -5,25 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steezy's Panenka | Kota Wraps Made Eezy</title>
 
-    <!-- Meta Description for SEO -->
     <meta name="description" content="Steezy's Panenka serves delicious kota wraps and meals in Potchefstroom. Order via WhatsApp for quick service.">
 
-    <!-- Open Graph tags for WhatsApp/social link previews -->
     <meta property="og:title" content="Steezy's Panenka | Kota Wraps Made Eezy">
     <meta property="og:description" content="Steezy's Panenka serves delicious kota wraps and meals in Potchefstroom. Order via WhatsApp for quick service.">
     <meta property="og:type" content="restaurant">
     <meta property="og:url" content="https://steezyspanenka.co.za">
     <meta property="og:image" content="https://images.unsplash.com/photo-1550547660-d9450f859349?w=1200&q=80">
 
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌯</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- LocalBusiness JSON-LD structured data for Google search results -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,7 +60,6 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER & HERO --- */
         header {
             background-color: var(--dark-bg);
             color: var(--primary-yellow);
@@ -141,7 +134,6 @@
             letter-spacing: 1px;
         }
 
-        /* --- MENU SECTION --- */
         .menu-section {
             padding: 5rem 5%;
             background-color: var(--primary-yellow);
@@ -225,7 +217,6 @@
             color: var(--primary-yellow);
         }
 
-        /* --- EXTRAS SECTION --- */
         .extras-section {
             padding: 4rem 5%;
             background-color: #fff;
@@ -265,7 +256,6 @@
             margin-left: 5px;
         }
 
-        /* --- CONTACT SECTION --- */
         .contact-section {
             padding: 4rem 5%;
             background-color: var(--primary-red);
@@ -310,7 +300,6 @@
             text-decoration: underline;
         }
 
-        /* --- SOCIAL ICONS --- */
         .social-icons {
             text-align: center;
             margin: 30px 0 10px;
@@ -328,7 +317,6 @@
             transform: scale(1.1);
         }
 
-        /* --- FLOATING WHATSAPP BUTTON --- */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -351,7 +339,6 @@
             background: #128C7E;
         }
 
-        /* --- FOOTER --- */
         footer {
             background-color: var(--dark-bg);
             color: #9ca3af;
@@ -367,7 +354,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- CUSTOM EXTRAS MODAL --- */
+        /* --- MODAL --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -387,7 +374,7 @@
             background: #fff;
             border-radius: 16px;
             padding: 2rem;
-            max-width: 420px;
+            max-width: 440px;
             width: 100%;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             animation: modalIn 0.2s ease;
@@ -412,15 +399,104 @@
             margin-bottom: 1rem;
         }
 
-        .modal label {
+        /* Delivery Toggle */
+        .delivery-toggle-label {
             display: block;
             font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .delivery-toggle {
+            display: flex;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .delivery-toggle input[type="radio"] {
+            display: none;
+        }
+
+        .delivery-toggle label {
+            flex: 1;
+            text-align: center;
+            padding: 0.65rem 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .delivery-toggle label:first-of-type {
+            border-right: 2px solid #e5e7eb;
+        }
+
+        .delivery-toggle input[type="radio"]:checked + label {
+            background-color: var(--dark-bg);
+            color: var(--primary-yellow);
+        }
+
+        .delivery-toggle label:hover {
+            background-color: #f3f4f6;
+        }
+
+        .delivery-toggle input[type="radio"]:checked + label:hover {
+            background-color: var(--dark-bg);
+        }
+
+        /* Delivery Address Field */
+        .delivery-address-group {
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+
+        .delivery-address-group.hidden {
+            max-height: 0;
+            opacity: 0;
+            margin-bottom: 0;
+        }
+
+        .delivery-address-group.visible {
+            max-height: 120px;
+            opacity: 1;
+        }
+
+        .delivery-address-group label {
+            display: block;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-dark);
             margin-bottom: 0.4rem;
         }
 
-        .modal textarea {
+        .delivery-address-group textarea {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.65rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            resize: vertical;
+            min-height: 55px;
+            transition: border-color 0.2s;
+        }
+
+        .delivery-address-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+        }
+
+        /* Extras textarea */
+        .modal textarea#modal-extras {
             width: 100%;
             border: 2px solid #e5e7eb;
             border-radius: 8px;
@@ -428,19 +504,28 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             resize: vertical;
-            min-height: 80px;
+            min-height: 60px;
             transition: border-color 0.2s;
+            margin-bottom: 0.5rem;
         }
 
-        .modal textarea:focus {
+        .modal textarea#modal-extras:focus {
             outline: none;
             border-color: var(--primary-yellow);
+        }
+
+        .extras-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
         }
 
         .modal-hint {
             font-size: 0.8rem;
             color: #6b7280;
-            margin-top: 0.4rem;
+            margin-top: 0.3rem;
             margin-bottom: 1.2rem;
         }
 
@@ -488,7 +573,23 @@
             background: #128C7E;
         }
 
-        /* Responsive */
+        /* --- DELIVERY BANNER --- */
+        .delivery-banner {
+            background: var(--dark-bg);
+            color: var(--primary-yellow);
+            text-align: center;
+            padding: 1rem 5%;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .delivery-banner i {
+            margin-right: 8px;
+        }
+
         @media (max-width: 768px) {
             .hero h2 { font-size: 2.5rem; }
             .hero p { font-size: 1.2rem; }
@@ -500,6 +601,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Delivery Banner -->
+    <div class="delivery-banner">
+        <i class="fas fa-motorcycle"></i> Delivery Available!
+    </div>
 
     <header>
         <div class="logo">
@@ -644,19 +750,36 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/27739226892" target="_blank" rel="noopener" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i> Order via WhatsApp
     </a>
 
-    <!-- Custom branded extras modal -->
+    <!-- Order Modal with Delivery/Pickup Option -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
             <h3 id="modal-item-name">Item Name</h3>
             <div class="modal-price" id="modal-item-price">R00</div>
-            <label for="modal-extras">Add extras? (optional)</label>
+
+            <!-- Delivery / Pickup Toggle -->
+            <span class="delivery-toggle-label">How would you like to get your order?</span>
+            <div class="delivery-toggle">
+                <input type="radio" name="orderType" id="orderPickup" value="Pickup" checked>
+                <label for="orderPickup"><i class="fas fa-store"></i> Pickup</label>
+                <input type="radio" name="orderType" id="orderDelivery" value="Delivery">
+                <label for="orderDelivery"><i class="fas fa-motorcycle"></i> Delivery</label>
+            </div>
+
+            <!-- Delivery Address (hidden by default) -->
+            <div class="delivery-address-group hidden" id="delivery-address-group">
+                <label for="modal-address">Delivery Address</label>
+                <textarea id="modal-address" placeholder="Enter your full delivery address..."></textarea>
+            </div>
+
+            <!-- Extras -->
+            <label class="extras-label" for="modal-extras">Add extras? (optional)</label>
             <textarea id="modal-extras" placeholder="e.g. extra cheese, no lettuce, extra sauce..."></textarea>
             <p class="modal-hint">Extras: Cheese R5 · Egg R5 · Bacon R8 · Vienna R10 · Beef Patty R12 · Riblets R15 · Russian R15</p>
+
             <div class="modal-buttons">
                 <button class="btn-cancel" id="modal-cancel">Cancel</button>
                 <button class="btn-order" id="modal-confirm">
@@ -676,15 +799,31 @@
             const businessNumber = '27739226892';
             let currentItem = null;
 
-            const overlay  = document.getElementById('modal-overlay');
-            const nameEl   = document.getElementById('modal-item-name');
-            const priceEl  = document.getElementById('modal-item-price');
-            const extrasEl = document.getElementById('modal-extras');
-            const cancelBtn  = document.getElementById('modal-cancel');
-            const confirmBtn = document.getElementById('modal-confirm');
+            const overlay       = document.getElementById('modal-overlay');
+            const nameEl        = document.getElementById('modal-item-name');
+            const priceEl       = document.getElementById('modal-item-price');
+            const extrasEl      = document.getElementById('modal-extras');
+            const addressEl     = document.getElementById('modal-address');
+            const addressGroup  = document.getElementById('delivery-address-group');
+            const radioPickup   = document.getElementById('orderPickup');
+            const radioDelivery = document.getElementById('orderDelivery');
+            const cancelBtn     = document.getElementById('modal-cancel');
+            const confirmBtn    = document.getElementById('modal-confirm');
+
+            // Toggle delivery address field visibility
+            radioDelivery.addEventListener('change', function () {
+                addressGroup.classList.remove('hidden');
+                addressGroup.classList.add('visible');
+            });
+
+            radioPickup.addEventListener('change', function () {
+                addressGroup.classList.remove('visible');
+                addressGroup.classList.add('hidden');
+                addressEl.value = '';
+            });
 
             // Open modal on menu card click
-            document.querySelectorAll('.menu-card').forEach(card => {
+            document.querySelectorAll('.menu-card').forEach(function (card) {
                 card.addEventListener('click', function () {
                     currentItem = {
                         name:  this.dataset.name,
@@ -693,6 +832,10 @@
                     nameEl.textContent  = currentItem.name;
                     priceEl.textContent = 'R' + currentItem.price;
                     extrasEl.value = '';
+                    addressEl.value = '';
+                    radioPickup.checked = true;
+                    addressGroup.classList.remove('visible');
+                    addressGroup.classList.add('hidden');
                     overlay.classList.add('active');
                     extrasEl.focus();
                 });
@@ -715,11 +858,22 @@
             // Send WhatsApp order
             confirmBtn.addEventListener('click', function () {
                 if (!currentItem) return;
+
                 const extras = extrasEl.value.trim();
+                const orderType = radioDelivery.checked ? 'Delivery' : 'Pickup';
+                const address = addressEl.value.trim();
+
                 let message = 'Hello, I would like to order the ' + currentItem.name + ' (R' + currentItem.price + ').';
+                message += '\n\nOrder Type: ' + orderType;
+
+                if (orderType === 'Delivery' && address) {
+                    message += '\nDelivery Address: ' + address;
+                }
+
                 if (extras) {
                     message += '\n\nExtras: ' + extras;
                 }
+
                 const url = 'https://wa.me/' + businessNumber + '?text=' + encodeURIComponent(message);
                 window.open(url, '_blank');
                 closeModal();
